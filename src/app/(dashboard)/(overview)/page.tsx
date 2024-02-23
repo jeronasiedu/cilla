@@ -35,8 +35,10 @@ export default function OverviewPage() {
             <h3>{item.name}</h3>
             <div className={"relative w-full aspect-square"}>
               <Image
-                src={item.image}
+                src={item.src}
                 alt={item.name}
+                blurDataURL={item.blur}
+                placeholder="blur"
                 fill
                 className={"rounded-xl"}
               />

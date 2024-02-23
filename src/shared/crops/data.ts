@@ -1,17 +1,24 @@
+import cocoa from "../../../public/cocoa.jpg";
+import coffee from "../../../public/coffee.jpg";
+import cashew from "../../../public/cashew.jpg";
+
 export const crops = [
   {
     id: "1",
     name: "Cocoa",
-    image: "/cocoa.jpg",
+    src: cocoa.src,
+    blur: cocoa.blurDataURL,
   },
   {
     id: "2",
     name: "Coffee",
-    image: "/coffee.jpg",
+    src: coffee.src,
+    blur: coffee.blurDataURL,
   },
   {
     id: "3",
     name: "Cashew",
-    image: "/cashew.jpg",
+    src: cashew.src,
+    blur: cashew.blurDataURL,
   },
 ];
