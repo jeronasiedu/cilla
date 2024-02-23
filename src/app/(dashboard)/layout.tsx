@@ -8,7 +8,7 @@ import Navbar from "@/shared/components/navbar";
 const font = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Farm House",
+  title: "Farm Choice",
   description: "Revolutionary way to manage your farm",
 };
 
