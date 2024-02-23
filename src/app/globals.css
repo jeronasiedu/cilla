@@ -2,32 +2,213 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer components {
+    .btn {
+        @apply flex items-center text-sm sm:text-base justify-center gap-2 px-6 py-2 rounded-full font-medium duration-300 disabled:cursor-not-allowed disabled:opacity-50;
+    }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+    .btn-primary {
+        @apply hover:bg-green-500 bg-green-400;
+    }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    .btn-danger {
+        @apply hover:bg-red-400 bg-red-500 text-white focus-visible:ring-red-500 ;
+    }
+
+    .btn-outline {
+        @apply outline-none ring-gray-400 border  duration-300 hover:bg-green-200  focus-visible:bg-green-500;
+    }
+
+    .btn-link {
+        @apply px-2 text-green-600 gap-1 py-1 hover:bg-green-50
+    }
+
+    .btn-icon {
+        @apply flex items-center justify-center p-2  duration-300 hover:bg-gray-300 bg-gray-100;
+    }
+
+
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .gradient-bg {
+        background-color: hsla(188, 10%, 13%, 1);
+        background-image: radial-gradient(at 6% 99%, hsla(188, 10%, 13%, 1) 0px, transparent 50%),
+        radial-gradient(at 88% 96%, hsla(195, 12%, 12%, 1) 0px, transparent 50%),
+        radial-gradient(at 95% 70%, hsla(195, 12%, 12%, 1) 0px, transparent 50%),
+        radial-gradient(at 50% 17%, hsla(120, 3%, 19%, 1) 0px, transparent 50%),
+        radial-gradient(at 82% 50%, hsla(195, 9%, 17%, 1) 0px, transparent 50%);
+    }
+
+    .readings-bg {
+        background-color: #99ff9b;
+        background-image: radial-gradient(at 5% 20%, hsla(320, 65%, 78%, 1) 0px, transparent 50%),
+        radial-gradient(at 53% 50%, hsla(68, 62%, 66%, 1) 0px, transparent 50%),
+        radial-gradient(at 73% 87%, hsla(199, 79%, 67%, 1) 0px, transparent 50%),
+        radial-gradient(at 12% 65%, hsla(183, 60%, 66%, 1) 0px, transparent 50%),
+        radial-gradient(at 65% 55%, hsla(179, 81%, 61%, 1) 0px, transparent 50%),
+        radial-gradient(at 4% 2%, hsla(129, 99%, 75%, 1) 0px, transparent 50%),
+        radial-gradient(at 23% 87%, hsla(87, 81%, 74%, 1) 0px, transparent 50%);
+    }
+
+    .text-gradient {
+        @apply bg-gradient-to-tl from-lime-400 via-lime-500 to-lime-600 bg-clip-text text-transparent;
+    }
+
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* For Firefox */
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+
+    @media screen and (max-width: 500px) {
+        .table-wrapper {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            overflow: auto;
+            white-space: normal;
+        }
+    }
+}
+
+@layer base {
+    label {
+        @apply font-medium mb-1.5 block;
+    }
+
+    input, select, textarea {
+        @apply outline-none py-2.5 px-4 ring-1 ring-gray-300 duration-300 rounded-full focus:ring-gray-500
+        disabled:opacity-50 disabled:pointer-events-none font-medium placeholder:text-sm md:placeholder:text-base;
+    }
+
+    :is(input,select,textarea):invalid:not(:placeholder-shown):not(:focus) {
+        @apply ring-red-500;
+    }
+
+    input[type='date'], input[type='time'] {
+        -webkit-appearance: none;
+        -webkit-min-logical-width: calc(100% - 16px);
+    }
+
+    select {
+        margin: 0;
+        -webkit-appearance: none;
+        appearance: none;
+        -moz-appearance: none;
+    }
+
+    table {
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    table tr th {
+        @apply border-t font-black
+    }
+
+    table tr th:first-child,
+    table tr td:first-child {
+        @apply border-l
+    }
+
+    table tr th:last-child,
+    table tr td:last-child {
+        @apply border-r
+    }
+
+
+    table tr:first-child th:first-child {
+        @apply rounded-tl-xl
+    }
+
+    table tr:first-child th:last-child {
+        @apply rounded-tr-xl
+    }
+
+    table tr:last-child td:first-child {
+        @apply rounded-bl-xl
+    }
+
+
+    table tr:last-child td:last-child {
+        @apply rounded-br-xl
+    }
+
+    .title {
+        @apply text-green-900 text-2xl md:text-3xl lg:text-4xl mb-0.5
+    }
+
+    .subtitle {
+        @apply text-gray-600 max-w-screen-sm
+    }
+
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply leading-[1.2] text-balance;
+    }
+
+    p {
+        @apply text-pretty
+    }
+
+    h1 {
+        @apply text-4xl font-bold;
+    }
+
+    h2 {
+        @apply text-3xl font-bold;
+    }
+
+    h3 {
+        @apply text-2xl font-semibold;
+    }
+
+    h4 {
+        @apply text-xl font-semibold;
+    }
+
+    h5 {
+        @apply text-lg font-semibold;
+    }
+
+    h6 {
+        @apply text-base font-semibold;
+    }
+
+    :is(a, button):focus-visible {
+        @apply outline-none ring-1 ring-offset-2  ring-green-500;
+    }
+
+
+    html,
+    body {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -webkit-tap-highlight-color: transparent; /* For iOS devices */
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+        @apply overscroll-none bg-gray-50;
+    }
+
 }
