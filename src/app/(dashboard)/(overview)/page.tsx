@@ -15,7 +15,7 @@ export default function OverviewPage() {
     >
       <div className="flex flex-col items-center justify-center max-w-6xl gap-4 mx-auto text-center">
         <h1 className="text-3xl md:text-4xl font-black leading-[1.2] max-w-4xl">
-          Real-Time Plant Growth Tracking and AI-Driven Yield Optimization
+          Real-Time Soil Metrics Tracking and AI-Driven Yield Optimization
         </h1>
         <p className="max-w-xl mx-auto md:block md:text-lg font-medium text-gray-600">
           Harness the Power of Technology to Maximize Crop Potential and Harvest

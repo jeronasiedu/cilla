@@ -1,22 +1,21 @@
 "use client";
 
-import useWeather from "@/shared/hooks/use_weather";
 import Spinner from "@/shared/components/spinner";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import { formatDate } from "@/shared/utils/date";
 import { Timestamp } from "@firebase/firestore";
+import { useWeather } from "@/shared/hooks/use_weather";
 
 const ReadingsPage = () => {
   const { loading, weatherData, geoData } = useWeather();
-
   const readings = [
     {
-      name: "Nitrogen (N)",
+      name: "Nitrogen (N) (ppm)",
       value: "60",
     },
     {
-      name: "Phosphorus (P)",
+      name: "Phosphorus (P) (ppm)",
       value: "92",
     },
     {
@@ -29,16 +28,15 @@ const ReadingsPage = () => {
     },
     {
       name: "Moisture",
-      value: "76",
+      value: "76%",
     },
     {
       name: "pH",
       value: "4",
     },
     {
-      name: "Electrical Conductivity",
+      name: "Electrical Conductivity (mS/cm)",
       value: "12",
-      unit: "(mS/cm)",
     },
   ];
 

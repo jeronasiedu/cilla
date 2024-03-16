@@ -25,6 +25,11 @@ function Navbar() {
       icon: "solar:chart-bold-duotone",
     },
     {
+      name: "Analytics",
+      href: "/analytics",
+      icon: "solar:chart-bold-duotone",
+    },
+    {
       name: "Tips & Tricks",
       href: "/tips",
       icon: "solar:lightbulb-bold-duotone",

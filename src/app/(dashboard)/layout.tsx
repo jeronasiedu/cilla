@@ -4,6 +4,8 @@ import "../globals.css";
 import { AuthProvider } from "@/shared/providers/auth_provider";
 import { Toaster } from "sonner";
 import Navbar from "@/shared/components/navbar";
+import WeatherProvider from "@/shared/weather_provider";
+import ModalConfigs from "@/shared/components/modal_configs";
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -20,16 +22,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
-        <body className={`${font.className}`}>
-          <Toaster
-            position={"top-right"}
-            closeButton
-            richColors
-            duration={4000}
-          />
-          <Navbar />
-          {children}
-        </body>
+        <WeatherProvider>
+          <body className={`${font.className}`}>
+            <Toaster
+              position={"top-right"}
+              closeButton
+              richColors
+              duration={4000}
+            />
+            <ModalConfigs />
+            <Navbar />
+            {children}
+          </body>
+        </WeatherProvider>
       </AuthProvider>
     </html>
   );
