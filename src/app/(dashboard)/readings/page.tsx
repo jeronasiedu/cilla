@@ -44,7 +44,7 @@ const ReadingsPage = () => {
     <main className={"container pt-18 p-4 pb-10"}>
       <div className="max-w-6xl mx-auto">
         <h3 className={"mb-4"}>Weather Forecast</h3>
-        <div className="w-full max-w-[20rem] aspect-video rounded-xl bg-white border p-4 mb-8">
+        <div className="w-full max-w-[20rem] md:aspect-video rounded-xl bg-white border p-4 mb-8">
           {loading ? (
             <div className={"w-full h-full flex items-center justify-center"}>
               <Spinner />
@@ -85,17 +85,19 @@ const ReadingsPage = () => {
             </div>
           )}
         </div>
-        <h3 className={"mb-3"}>Soil Forecast</h3>
-        <div className={"grid md:grid-cols-4 gap-6"}>
+        <h3 className={"mb-6"}>Soil Forecast</h3>
+        <div className={"grid grid-cols-2 md:grid-cols-4 gap-6"}>
           {readings.map((reading, index) => (
             <div
               key={index}
               className={
-                "w-full h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+                "w-full max-sm:last:col-span-2 h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
               }
             >
-              <h4 className={"text-green-600"}>{reading.name}</h4>
-              <p className={"text-5xl text-center my-auto"}>
+              <h4 className={"text-base md:text-xl text-green-600"}>
+                {reading.name}
+              </h4>
+              <p className={"text-3xl md:text-5xl text-center my-auto"}>
                 <span>{reading.value}</span>
               </p>
             </div>

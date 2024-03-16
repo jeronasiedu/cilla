@@ -29,7 +29,7 @@ const CropPredictionPage = () => {
     nitrogen: 29,
     phosphorus: 14,
     potassium: 35,
-    crop: Number(id || 4),
+    crop: parseInt(id),
   };
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const CropPredictionPage = () => {
 
   if (!data) {
     return (
-      <div className="w-full min-h-dvh flex items-center justify-center">
+      <div className="w-full min-h-[80vh] flex items-center justify-center">
         <Spinner />
       </div>
     );
@@ -100,88 +100,98 @@ const CropPredictionPage = () => {
 
       {soilParamsPerYield && (
         <div>
-          <h3 className={"mb-3"}>Soil Forecast</h3>
-          <div className={" mx-auto grid md:grid-cols-3 gap-6"}>
+          <h3 className={"mb-6"}>Soil Forecast</h3>
+          <div className={"mx-auto grid-cols-2 grid md:grid-cols-3 gap-6"}>
             <div
               className={
-                "w-full h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+                "w-full h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
               }
             >
-              <h4 className={"text-green-600"}>Nitrogen (N) (ppm)</h4>
-              <p className={"text-5xl text-center my-auto"}>
+              <h4 className={"text-green-600 text-base md:text-xl"}>
+                Nitrogen (N) (ppm)
+              </h4>
+              <p className={"text-3xl md:text-5xl text-center my-auto"}>
                 {soilParamsPerYield.nitrogen}
               </p>
             </div>
             <div
               className={
-                "w-full h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+                "w-full h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
               }
             >
-              <h4 className={"text-green-600"}>Phosphorus (P) (ppm)</h4>
-              <p className={"text-5xl text-center my-auto"}>
+              <h4 className={"text-green-600 text-base md:text-xl"}>
+                Phosphorus (P) (ppm)
+              </h4>
+              <p className={"text-3xl md:text-5xl text-center my-auto"}>
                 {soilParamsPerYield.phosphorus}
               </p>
             </div>
             <div
               className={
-                "w-full h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+                "w-full h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
               }
             >
-              <h4 className={"text-green-600"}>Potassium (K) (ppm)</h4>
-              <p className={"text-5xl text-center my-auto"}>
+              <h4 className={"text-green-600 text-base md:text-xl"}>
+                Potassium (K) (ppm)
+              </h4>
+              <p className={"text-3xl md:text-5xl text-center my-auto"}>
                 {soilParamsPerYield.potassium}
               </p>
             </div>
             <div
               className={
-                "w-full h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+                "w-full h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
               }
             >
-              <h4 className={"text-green-600"}>Moisture (%)</h4>
-              <p className={"text-5xl text-center my-auto"}>
+              <h4 className={"text-green-600 text-base md:text-xl"}>
+                Moisture (%)
+              </h4>
+              <p className={"text-3xl md:text-5xl text-center my-auto"}>
                 {soilParamsPerYield.moisture}
               </p>
             </div>
             <div
               className={
-                "w-full h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+                "w-full h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
               }
             >
-              <h4 className={"text-green-600"}>Temperature (%)</h4>
-              <p className={"text-5xl text-center my-auto"}>
+              <h4 className={"text-green-600 text-base md:text-xl"}>
+                Temperature
+              </h4>
+              <p className={"text-3xl md:text-5xl text-center my-auto"}>
                 {soilParamsPerYield.temp} °C
               </p>
             </div>
             <div
               className={
-                "w-full h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+                "w-full h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
               }
             >
-              <h4 className={"text-green-600"}>pH</h4>
-              <p className={"text-5xl text-center my-auto"}>
+              <h4 className={"text-green-600 text-base md:text-xl"}>pH</h4>
+              <p className={"text-3xl md:text-5xl text-center my-auto"}>
                 {soilParamsPerYield.ph}
               </p>
             </div>
             <div
               className={
-                "w-full h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+                "w-full  h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
               }
             >
-              <h4 className={"text-green-600"}>
-                Electrical Conductivity (mS/cm)
-              </h4>
-              <p className={"text-5xl text-center my-auto"}>
-                {soilParamsPerYield.ec}
+              <h4 className={"text-green-600 text-base md:text-xl"}>Seeds</h4>
+              <p className={"text-3xl md:text-5xl text-center my-auto"}>
+                {soilParamsPerYield.seeds}
               </p>
             </div>
             <div
               className={
-                "w-full h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+                "w-full  h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
               }
             >
-              <h4 className={"text-green-600"}>Seeds</h4>
-              <p className={"text-5xl text-center my-auto"}>
-                {soilParamsPerYield.seeds}
+              <h4 className={"text-green-600 text-base md:text-xl"}>
+                EC (mS/cm)
+              </h4>
+              <p className={"text-3xl md:text-5xl text-center my-auto"}>
+                {soilParamsPerYield.ec}
               </p>
             </div>
           </div>

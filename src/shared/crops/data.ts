@@ -11,14 +11,14 @@ export const crops = [
   },
   {
     id: "2",
-    name: "Coffee",
-    src: coffee.src,
-    blur: coffee.blurDataURL,
-  },
-  {
-    id: "3",
     name: "Cashew",
     src: cashew.src,
     blur: cashew.blurDataURL,
+  },
+  {
+    id: "3",
+    name: "Coffee",
+    src: coffee.src,
+    blur: coffee.blurDataURL,
   },
 ];
