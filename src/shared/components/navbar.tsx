@@ -54,11 +54,15 @@ function Navbar() {
   return (
     <header className="sticky bg-white top-0 z-20 p-4 backdrop-blur-md border-b">
       <nav className="flex items-center w-full max-w-6xl mx-auto">
-        <Link
-          href={"/"}
-          className="flex justify-center items-center space-x-1.5"
-        >
-          <h3 className={"text-green-600"}>FARM CHOICE</h3>
+        <Link href={"/"} className="flex justify-center items-center relative">
+          <span className={"text-green-600 text-2xl font-semibold"}>
+            FARMCHOICE
+          </span>
+          <img
+            src={"/leaf.svg"}
+            alt={"leaf"}
+            className={"absolute w-8 right-[0.2rem] -top-[1.17rem]"}
+          />
         </Link>
         <div className="flex-1" />
         <ul className="items-center hidden gap-8  md:flex ">
