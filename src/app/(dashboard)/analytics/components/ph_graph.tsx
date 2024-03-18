@@ -10,17 +10,24 @@ import {
 } from "recharts";
 import { fieldColors } from "@/shared/entities/reading";
 import React from "react";
-import { generateDummyReadings } from "@/shared/utils/random";
+import useReadings from "@/shared/hooks/use_readings";
 
 const PHGraph = () => {
-  const data = generateDummyReadings(15);
+  const { readings } = useReadings();
+  const pHReadings = readings.map((reading) => {
+    return {
+      ph: reading.ph,
+      time: `${reading.date.getMinutes()}:${reading.date.getSeconds()}`,
+    };
+  });
+
   return (
     <div className={"w-full h-[20rem] md:h-[25rem]"}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
           height={300}
-          data={data}
+          data={pHReadings}
           margin={{
             top: 5,
             right: 30,
@@ -29,7 +36,7 @@ const PHGraph = () => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey={""} />
+          <XAxis dataKey={"time"} />
           <YAxis dataKey={""} />
           <Tooltip />
           <Legend />

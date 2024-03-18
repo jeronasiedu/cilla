@@ -1,11 +1,12 @@
 "use client";
 
-import { Reading, SoilParamsPerYield } from "@/shared/entities/reading";
+import { SoilParamsPerYield } from "@/shared/entities/reading";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import Spinner from "@/shared/components/spinner";
 import { crops } from "@/shared/crops/data";
 import { useDesiredCropsStore } from "@/app/(dashboard)/predictions/store/desired_crop_store";
+import useReadings from "@/shared/hooks/use_readings";
 
 type DataProp = {
   seeds: number;
@@ -18,6 +19,7 @@ type SoilParamsPerYieldsProp = SoilParamsPerYield & {
 };
 const PredictionPage = () => {
   const [data, setData] = useState<DataProp[]>();
+  const { readings } = useReadings();
 
   const [soilParamsPerYield, setSoilParamsPerYield] =
     useState<SoilParamsPerYieldsProp[]>();
@@ -26,16 +28,9 @@ const PredictionPage = () => {
     (state) => state.open,
   );
 
-  const reading: Reading = {
-    moisture: 36,
-    temp: 22,
-    ph: 5.6,
-    ec: 0.7,
-    nitrogen: 29,
-    phosphorus: 14,
-    potassium: 35,
-  };
   useEffect(() => {
+    const latestReading = readings.at(-1);
+    if (!latestReading) return;
     const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/get-yield`;
     const fetchData = async () => {
       const response = await fetch(endpoint, {
@@ -43,7 +38,7 @@ const PredictionPage = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(reading),
+        body: JSON.stringify(latestReading),
       });
       const results = await response.json();
       setData(results);
@@ -51,7 +46,7 @@ const PredictionPage = () => {
     fetchData()
       .then(() => {})
       .catch((err) => toast.error(err.message));
-  }, []);
+  }, [readings]);
 
   if (!data) {
     return (

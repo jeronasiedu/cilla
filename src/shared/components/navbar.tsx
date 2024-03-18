@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 
 function Navbar() {
   const pathname = usePathname();
+
   const links = [
     {
       name: "Overview",
@@ -27,10 +28,10 @@ function Navbar() {
     {
       name: "Analytics",
       href: "/analytics",
-      icon: "solar:chart-bold-duotone",
+      icon: "ion:analytics-outline",
     },
     {
-      name: "Tips & Tricks",
+      name: "Tips",
       href: "/tips",
       icon: "solar:lightbulb-bold-duotone",
     },
@@ -38,7 +39,6 @@ function Navbar() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const menuRef = useRef<HTMLDivElement>(null);
   useClickOutside([menuRef], () => {
     setIsMenuOpen(false);

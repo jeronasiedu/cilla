@@ -1,5 +1,4 @@
 import {
-  Brush,
   CartesianGrid,
   Legend,
   Line,
@@ -9,19 +8,27 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { generateDummyReadings } from "@/shared/utils/random";
 import React from "react";
 import { fieldColors } from "@/shared/entities/reading";
+import useReadings from "@/shared/hooks/use_readings";
 
 const NpkGraph = () => {
-  const data = generateDummyReadings(15);
+  const { readings } = useReadings();
+  const npkReadings = readings.map((reading) => {
+    return {
+      nitrogen: reading.nitrogen,
+      potassium: reading.potassium,
+      phosphorus: reading.phosphorus,
+      time: `${reading.date.getMinutes()}:${reading.date.getSeconds()}`,
+    };
+  });
   return (
     <div className={"w-full h-[20rem] md:h-[40rem]"}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
           height={300}
-          data={data}
+          data={npkReadings}
           margin={{
             top: 5,
             right: 30,
@@ -30,11 +37,10 @@ const NpkGraph = () => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey={""} />
+          <XAxis dataKey={"time"} />
           <YAxis dataKey={""} />
           <Tooltip />
           <Legend />
-          <Brush dataKey="name" height={30} />
           <Line
             type="monotone"
             dataKey="nitrogen"

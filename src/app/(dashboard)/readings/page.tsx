@@ -6,39 +6,14 @@ import { Icon } from "@iconify/react";
 import { formatDate } from "@/shared/utils/date";
 import { Timestamp } from "@firebase/firestore";
 import { useWeather } from "@/shared/hooks/use_weather";
+import useReadings from "@/shared/hooks/use_readings";
+import { initialReading } from "@/shared/entities/reading";
 
 const ReadingsPage = () => {
   const { loading, weatherData, geoData } = useWeather();
-  const readings = [
-    {
-      name: "Nitrogen (N) (ppm)",
-      value: "60",
-    },
-    {
-      name: "Phosphorus (P) (ppm)",
-      value: "92",
-    },
-    {
-      name: "Potassium (K)",
-      value: "15",
-    },
-    {
-      name: "Temperature",
-      value: "29 °C",
-    },
-    {
-      name: "Moisture",
-      value: "76%",
-    },
-    {
-      name: "pH",
-      value: "4",
-    },
-    {
-      name: "Electrical Conductivity (mS/cm)",
-      value: "12",
-    },
-  ];
+  const { readings: data } = useReadings();
+
+  const latestReading = data.at(-1) || initialReading;
 
   return (
     <main className={"container pt-18 p-4 pb-10"}>
@@ -87,21 +62,86 @@ const ReadingsPage = () => {
         </div>
         <h3 className={"mb-6"}>Soil Forecast</h3>
         <div className={"grid grid-cols-2 md:grid-cols-4 gap-6"}>
-          {readings.map((reading, index) => (
-            <div
-              key={index}
-              className={
-                "w-full max-sm:last:col-span-2 h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
-              }
-            >
-              <h4 className={"text-base md:text-xl text-green-600"}>
-                {reading.name}
-              </h4>
-              <p className={"text-3xl md:text-5xl text-center my-auto"}>
-                <span>{reading.value}</span>
-              </p>
-            </div>
-          ))}
+          <div
+            className={
+              "w-full h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+            }
+          >
+            <h4 className={"text-green-600 text-base md:text-xl"}>
+              Nitrogen (N) (ppm)
+            </h4>
+            <p className={"text-3xl md:text-5xl text-center my-auto"}>
+              {latestReading.nitrogen}
+            </p>
+          </div>
+          <div
+            className={
+              "w-full h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+            }
+          >
+            <h4 className={"text-green-600 text-base md:text-xl"}>
+              Phosphorus (P) (ppm)
+            </h4>
+            <p className={"text-3xl md:text-5xl text-center my-auto"}>
+              {latestReading.phosphorus}
+            </p>
+          </div>
+          <div
+            className={
+              "w-full h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+            }
+          >
+            <h4 className={"text-green-600 text-base md:text-xl"}>
+              Potassium (K) (ppm)
+            </h4>
+            <p className={"text-3xl md:text-5xl text-center my-auto"}>
+              {latestReading.potassium}
+            </p>
+          </div>
+          <div
+            className={
+              "w-full h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+            }
+          >
+            <h4 className={"text-green-600 text-base md:text-xl"}>Moisture</h4>
+            <p className={"text-3xl md:text-5xl text-center my-auto"}>
+              {latestReading.moisture} (%)
+            </p>
+          </div>
+          <div
+            className={
+              "w-full h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+            }
+          >
+            <h4 className={"text-green-600 text-base md:text-xl"}>
+              Temperature
+            </h4>
+            <p className={"text-3xl md:text-5xl text-center my-auto"}>
+              {latestReading.temp} °C
+            </p>
+          </div>
+          <div
+            className={
+              "w-full h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+            }
+          >
+            <h4 className={"text-green-600 text-base md:text-xl"}>pH</h4>
+            <p className={"text-3xl md:text-5xl text-center my-auto"}>
+              {latestReading.ph}
+            </p>
+          </div>
+          <div
+            className={
+              "w-full  h-[9rem] md:h-[15rem] flex flex-col bg-white border rounded-xl p-4"
+            }
+          >
+            <h4 className={"text-green-600 text-base md:text-xl"}>
+              EC (mS/cm)
+            </h4>
+            <p className={"text-3xl md:text-5xl text-center my-auto"}>
+              {latestReading.ec}
+            </p>
+          </div>
         </div>
       </div>
     </main>
