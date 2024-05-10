@@ -21,11 +21,10 @@ const RegisterPage = () => {
     e.preventDefault();
     checkConnection();
     try {
-      // setLoading(true);
-      // await register(email, password);
-      // toast.success("Welcome to Proceipt");
-      // setLoading(true);
-      router.replace("/setup");
+      setLoading(true);
+      await register(email, password);
+      toast.success("Welcome to Farmhouse");
+      router.replace("/");
     } catch (e: any) {
       const message = normalizeFirebaseError(e);
       toast.error(message);
@@ -36,15 +35,10 @@ const RegisterPage = () => {
   const handleGoogleSignIn = async () => {
     checkConnection();
     try {
-      // setGoogleSignInLoading(true);
-      // const isNewUser = await continueWithGoogle();
-      // toast.success("Welcome to Proceipt");
-      // if (isNewUser) {
-      //   router.push("/setup");
-      // } else {
-      //   router.refresh();
-      // }
-      router.replace("/");
+      setGoogleSignInLoading(true);
+      await continueWithGoogle();
+      toast.success("Welcome to Farmhouse");
+      router.refresh();
     } catch (error: any) {
       const message = normalizeFirebaseError(error);
       toast.error(message);
@@ -59,13 +53,19 @@ const RegisterPage = () => {
       <article
         className={"hidden md:block w-1/2 bg-gray-100 p-8 pr-0  gradient-bg"}
       >
-        {/*<Image*/}
-        {/*  src={"/logo_light.svg"}*/}
-        {/*  alt={"Proceipt's logo"}*/}
-        {/*  width={200}*/}
-        {/*  height={200}*/}
-        {/*/>*/}
-        <h2 className={"text-white"}>Logo</h2>
+        <Link
+          href={"/"}
+          className="inline-flex justify-center items-center relative"
+        >
+          <span className={"text-green-600 text-2xl font-semibold"}>
+            FARMCHOICE
+          </span>
+          <img
+            src={"/leaf.svg"}
+            alt={"leaf"}
+            className={"absolute w-8 right-[0.2rem] -top-[1.17rem]"}
+          />
+        </Link>
         <div className="flex flex-col pt-32 text-white">
           <h1 className={"text-center mb-3"}>
             Manage Your Plants <br /> and Grow Anywhere.
@@ -77,14 +77,19 @@ const RegisterPage = () => {
       </article>
       <section className={"w-full md:w-1/2"}>
         <div className="md:pt-48 pt-16 p-4 flex flex-col items-center max-w-sm mx-auto">
-          {/*<Image*/}
-          {/*    src={"/logo_dark.svg"}*/}
-          {/*    alt={"Proceipt's logo"}*/}
-          {/*    width={200}*/}
-          {/*    height={200}*/}
-          {/*    className={"md:hidden"}*/}
-          {/*/>*/}
-          <h2 className={"text-white md:hidden"}>Logo</h2>
+          <Link
+            href={"/"}
+            className="inline-flex justify-center items-center relative lg:hidden"
+          >
+            <span className={"text-green-600 text-2xl font-semibold"}>
+              FARMCHOICE
+            </span>
+            <img
+              src={"/leaf.svg"}
+              alt={"leaf"}
+              className={"absolute w-8 right-[0.2rem] -top-[1.17rem]"}
+            />
+          </Link>
           <p className={"mb-2 mt-1 md:hidden"}>
             Get started with your free account
           </p>

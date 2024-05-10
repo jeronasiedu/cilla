@@ -4,10 +4,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import useClickOutside from "@/shared/hooks/use_click_outside";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useAuth } from "@/shared/hooks/use_auth";
+import { generateInitials } from "@/shared/utils/generate_initials";
 
 function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { signOut, user } = useAuth();
 
   const links = [
     {
@@ -88,7 +92,7 @@ function Navbar() {
             className={"btn btn-icon size-11 relative overflow-hidden"}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            PS
+            {generateInitials(user?.email || "PS")}
           </button>
 
           <AnimatePresence>
@@ -112,22 +116,22 @@ function Navbar() {
               >
                 <div className={"flex items-center gap-4 border-b p-2.5"}>
                   <span className="size-10 relative overflow-hidden rounded-full border flex items-center justify-center flex-shrink-0">
-                    PS
+                    {generateInitials(user?.email || "PS")}
                   </span>
                   <span className="flex flex-col items-start justify-between flex-1">
                     <p
                       className={
-                        "font-semibold text-ellipsis overflow-hidden max-w-[10rem]"
+                        "font-semibold text-ellipsis overflow-hidden max-w-[10rem] capitalize"
                       }
                     >
-                      Priscilla Saka
+                      {user?.email.split("@")[0]}
                     </p>
                     <small
                       className={
                         "text-ellipsis overflow-hidden w-full max-w-[10rem]"
                       }
                     >
-                      sakapriscilla@gmail.com
+                      {user?.email}
                     </small>
                   </span>
                 </div>
@@ -148,10 +152,12 @@ function Navbar() {
                     ))}
                   </ul>
 
-                  <Link
-                    href={"/login"}
-                    replace
-                    onClick={() => setIsMenuOpen(false)}
+                  <button
+                    onClick={async () => {
+                      setIsMenuOpen(false);
+                      await signOut();
+                      router.refresh();
+                    }}
                     className={
                       "btn btn-outline border-red-400 text-red-500 hover:bg-red-500 hover:text-white focus-visible:bg-red-500" +
                       " focus-visible:ring-red-500 focus-visible:text-white"
@@ -159,7 +165,7 @@ function Navbar() {
                   >
                     <Icon icon={"solar:logout-3-line-duotone"} />
                     Sign Out
-                  </Link>
+                  </button>
                 </div>
               </motion.div>
             )}

@@ -71,8 +71,8 @@ const PredictionPage = () => {
         <thead>
           <tr>
             <th className="border px-4 py-2">Crop</th>
-            <th className="border px-4 py-2">Seeds</th>
-            <th className="border px-4 py-2">Yield</th>
+            <th className="border px-4 py-2">Seeds (Kg)</th>
+            <th className="border px-4 py-2">Yield (Kg/Ha) </th>
           </tr>
         </thead>
         <tbody>
@@ -107,7 +107,7 @@ const PredictionPage = () => {
 
       {soilParamsPerYield && (
         <>
-          <h3 className={"mb-4"}>Desired Estimations</h3>
+          <h4 className={"mb-4"}>Desired Estimations</h4>
           <div className={"relative overflow-x-auto"}>
             <table className="table-auto w-full text-left text-sm md:text-base">
               <thead>
@@ -122,7 +122,7 @@ const PredictionPage = () => {
                   <th className="border px-4 py-2">
                     Electrical Conductivity (mS/cm)
                   </th>
-                  <th className="border px-4 py-2">Seeds</th>
+                  <th className="border px-4 py-2">Seeds (Kg)</th>
                 </tr>
               </thead>
               <tbody>

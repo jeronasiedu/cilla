@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useAuth } from "@/shared/hooks/use_auth";
 import { useState } from "react";
@@ -32,18 +31,24 @@ const ResetPasswordPage = () => {
   return (
     <main className={"min-h-screen flex w-full"}>
       <article
-          className={"hidden md:block w-1/2 bg-gray-100 p-8 pr-0  gradient-bg"}
+        className={"hidden md:block w-1/2 bg-gray-100 p-8 pr-0  gradient-bg"}
       >
-        {/*<Image*/}
-        {/*  src={"/logo_light.svg"}*/}
-        {/*  alt={"Proceipt's logo"}*/}
-        {/*  width={200}*/}
-        {/*  height={200}*/}
-        {/*/>*/}
-        <h2 className={'text-white'}>Logo</h2>
+        <Link
+          href={"/"}
+          className="inline-flex justify-center items-center relative"
+        >
+          <span className={"text-green-600 text-2xl font-semibold"}>
+            FARMCHOICE
+          </span>
+          <img
+            src={"/leaf.svg"}
+            alt={"leaf"}
+            className={"absolute w-8 right-[0.2rem] -top-[1.17rem]"}
+          />
+        </Link>
         <div className="flex flex-col pt-32 text-white">
           <h1 className={"text-center mb-3"}>
-            Manage Your Plants <br/> and Grow Anywhere.
+            Manage Your Plants <br /> and Grow Anywhere.
           </h1>
           <p className={"text-gray-200 text-center mb-20"}>
             View all the analytics and grow your farm from anywhere!
@@ -52,13 +57,19 @@ const ResetPasswordPage = () => {
       </article>
       <section className={"w-full md:w-1/2"}>
         <div className="md:pt-48 pt-16 p-4 flex flex-col items-center max-w-sm mx-auto">
-          <Image
-              src={"/logo_dark.svg"}
-              alt={"Proceipt's logo"}
-              width={200}
-            height={200}
-            className={"md:hidden"}
-          />
+          <Link
+            href={"/"}
+            className="inline-flex justify-center items-center relative lg:hidden"
+          >
+            <span className={"text-green-600 text-2xl font-semibold"}>
+              FARMCHOICE
+            </span>
+            <img
+              src={"/leaf.svg"}
+              alt={"leaf"}
+              className={"absolute w-8 right-[0.2rem] -top-[1.17rem]"}
+            />
+          </Link>
           <p className={"mb-2 mt-1 md:hidden"}>
             Enter the email associated with your account.
           </p>

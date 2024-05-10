@@ -2176,10 +2176,10 @@ jiti@^1.19.1:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.21.0.tgz#7c97f8fe045724e136a397f7340475244156105d"
   integrity sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==
 
-jose@^4.14.4:
-  version "4.15.4"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-4.15.4.tgz#02a9a763803e3872cf55f29ecef0dfdcc218cc03"
-  integrity sha512-W+oqK4H+r5sITxfxpSU+MMdr/YSWGvgZMQDIsNoBDGGy4i7GBPTtvFKibQzW06n3U3TqHjhvBJsirShsEJ6eeQ==
+jose@^5.2.3:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-5.3.0.tgz#61dadf6399e0141d621ad18c1b36a0d6ab17a972"
+  integrity sha512-IChe9AtAE79ru084ow8jzkN2lNrG3Ntfiv65Cvj9uOCE2m5LNsdHG+9EbxWxAoWRF9TgDOqLN5jm08++owDVRg==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
@@ -2387,15 +2387,15 @@ nanoid@^3.3.6, nanoid@^3.3.7:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.7.tgz#d0c301a691bc8d54efa0a2226ccf3fe2fd656bd8"
   integrity sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==
 
-next-firebase-auth-edge@^1.3.1-unstable.1:
-  version "1.3.1-unstable.1"
-  resolved "https://registry.yarnpkg.com/next-firebase-auth-edge/-/next-firebase-auth-edge-1.3.1-unstable.1.tgz#b1cc89697b58f65782048c3b853255ac351fe522"
-  integrity sha512-IdHS2Rf6gPMusT1eteeDITg4+irtQN5K8SZ1eCXyNEdAdTFihBXW+ppb6MgGevc9p2/uXnSZKrFEaIm00GHyoQ==
+next-firebase-auth-edge@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/next-firebase-auth-edge/-/next-firebase-auth-edge-1.4.3.tgz#a80434833513749dfb1ccf1724510512192098a9"
+  integrity sha512-FMprAQTSyKa/ITqYKbXkzyPNZBgfJhNB6ZORe56+kgkn3AzUKuoPc9R9Nxr5LTn/xjfnVbyZZ0uYSiolxUvizQ==
   dependencies:
     "@changesets/cli" "^2.25.2"
     cookie "^0.5.0"
     encoding "^0.1.13"
-    jose "^4.14.4"
+    jose "^5.2.3"
 
 next@14.1.0:
   version "14.1.0"
