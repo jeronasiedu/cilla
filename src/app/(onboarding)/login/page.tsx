@@ -23,7 +23,7 @@ const LoginPage = () => {
     try {
       setLoading(true);
       await login(email, password);
-      toast.success("Welcome to Farmhouse");
+      toast.success("Welcome to FarmChoice");
       router.replace("/");
     } catch (e: any) {
       const message = normalizeFirebaseError(e);
@@ -37,7 +37,7 @@ const LoginPage = () => {
     try {
       setGoogleSignInLoading(true);
       await continueWithGoogle();
-      toast.success("Welcome to Farmhouse");
+      toast.success("Welcome to FarmChoice");
       router.refresh();
     } catch (error: any) {
       const message = normalizeFirebaseError(error);
@@ -124,7 +124,7 @@ const LoginPage = () => {
                 value={email}
                 disabled={disableElements}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="cilla@farmhouse.com"
+                placeholder="cilla@FarmChoice.com"
                 className={"w-full"}
                 required
               />

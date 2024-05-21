@@ -24,9 +24,9 @@ export async function middleware(request: NextRequest) {
     },
     cookieSignatureKeys: ["secret1", "secret2"],
     serviceAccount: {
-      projectId: process.env.PROJECT_ID!,
-      clientEmail: process.env.CLIENT_EMAIL!,
-      privateKey: process.env.PRIVATE_KEY!,
+      projectId: process.env.NEXT_PUBLIC_PROJECT_ID!,
+      clientEmail: process.env.NEXT_PUBLIC_CLIENT_EMAIL!,
+      privateKey: process.env.NEXT_PUBLIC_PRIVATE_KEY!,
     },
     handleValidToken: async ({}, headers) => {
       if (PUBLIC_PATHS.includes(request.nextUrl.pathname)) {
